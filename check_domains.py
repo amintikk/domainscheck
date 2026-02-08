@@ -122,7 +122,14 @@ def c(text: str, color: str, use_color: bool) -> str:
 
 def sanitize_domain(line: str) -> Optional[str]:
     line = line.strip()
-    if not line or line.startswith("#"):
+    if not line:
+        return None
+    # Strip UTF-8 BOM if present
+    if line.startswith("\ufeff"):
+        line = line.lstrip("\ufeff").strip()
+        if not line:
+            return None
+    if line.startswith("#"):
         return None
     # Keep first token, remove protocol and paths
     token = line.split()[0]

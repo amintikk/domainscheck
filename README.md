@@ -22,6 +22,7 @@ python check_domains.py domains.txt -o available.txt
 - One domain per line
 - Comments with `#` are ignored
 - URLs are accepted and cleaned (http/https and paths are removed)
+- Blank lines are ignored
 
 ## Output File
 - `available.txt` contains only available domains, one per line
